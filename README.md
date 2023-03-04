@@ -156,7 +156,6 @@ Uma Api para sistema de avaliações de estabelecimentos
 ```js
 {
  nome: "Paulo Henrique",
- email: "ph23.alves@gmail.com",
  senha: "123"
 }
 ```
@@ -166,7 +165,7 @@ Uma Api para sistema de avaliações de estabelecimentos
 | campo | tipo  | obrigatório | descrição                            |
 | ----- | ----- | :---------: | ------------------------------------ |
 | nome  | texto |     sim     | Nome completo                        |
-| email | text  |     sim     | validação de e-mail                  |
+| email | texto |     sim     | validação de e-mail                  |
 | senha | texto |     sim     | o valor deve ter no minimo 6 digitos |
 
 ### Apagar usuarios
@@ -199,6 +198,7 @@ Uma Api para sistema de avaliações de estabelecimentos
 
 ```js
 {
+ id: 1,
  nota: 4.0,
  comentarios: "Esse é o comentário"
 }
@@ -220,6 +220,7 @@ Uma Api para sistema de avaliações de estabelecimentos
 
 ```js
 {
+ id: 1,
  nota: 4.0,
  comentarios: "Esse é o comentário"
 }
