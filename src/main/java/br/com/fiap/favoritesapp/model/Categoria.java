@@ -2,24 +2,24 @@ package br.com.fiap.favoritesapp.model;
 
 public class Categoria {
 
-      private Integer id;
+      private Long id;
       private String nome;
       private String descricao;
 
       public Categoria() {
       }
 
-      public Categoria(Integer id, String nome, String descricao) {
+      public Categoria(Long id, String nome, String descricao) {
             this.id = id;
             this.nome = nome;
             this.descricao = descricao;
       }
 
-      public Integer getId() {
+      public Long getId() {
         return id;
       }
 
-      public void setId(Integer id) {
+      public void setId(Long id) {
         this.id = id;
       }
 

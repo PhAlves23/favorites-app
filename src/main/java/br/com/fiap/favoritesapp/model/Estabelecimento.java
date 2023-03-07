@@ -2,14 +2,23 @@ package br.com.fiap.favoritesapp.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity(name = "Estabelecimento")
+@Table(name = "TB_ESTABELECIMENTO")
 public class Estabelecimento {
 
-    private Integer id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private float nota;
     private String nome;
     private String site;
     private String local;
-    private String imagem;
+    private Byte imagem;
     private String contato;
     private String endereco;
     private String descricao;
@@ -20,7 +29,7 @@ public class Estabelecimento {
     public Estabelecimento() {
     }
 
-    private Estabelecimento(Integer id, String nome, String site, float nota, String local, String imagem,
+    private Estabelecimento(Long id, String nome, String site, float nota, String local, Byte imagem,
       String contato, String endereco, String descricao, LocalDateTime horarioFuncionamento) {
       this.id = id;
       this.nome = nome;
@@ -40,12 +49,12 @@ public class Estabelecimento {
 
     public static final class EstabelecimentoBuilder{
 
-      private Integer id;
+      private Long id;
       private float nota;
       private String nome;
       private String site;
       private String local;
-      private String imagem;
+      private Byte imagem;
       private String contato;
       private String endereco;
       private String descricao;
@@ -55,7 +64,7 @@ public class Estabelecimento {
 
       }
 
-      public EstabelecimentoBuilder id(Integer id) {
+      public EstabelecimentoBuilder id(Long id) {
         this.id = id;
         return this;
       }
@@ -80,7 +89,7 @@ public class Estabelecimento {
         return this;
       }
 
-      public EstabelecimentoBuilder imagem(String imagem) {
+      public EstabelecimentoBuilder imagem(Byte imagem) {
         this.imagem = imagem;
         return this;
       }
@@ -110,7 +119,7 @@ public class Estabelecimento {
       }
     } 
 
-    public Integer getId() {
+    public Long getId() {
       return id;
     }
 
@@ -130,7 +139,7 @@ public class Estabelecimento {
       return local;
     }
 
-    public String getImagem() {
+    public Byte getImagem() {
       return imagem;
     }
     public String getContato() {

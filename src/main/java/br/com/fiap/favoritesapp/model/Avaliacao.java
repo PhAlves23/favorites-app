@@ -2,18 +2,18 @@ package br.com.fiap.favoritesapp.model;
 
 public class Avaliacao {
 
-  private Integer id;
+  private Long id;
   private Integer nota;
   private String criadoEm;
   private String comentario;
-  private Integer donoId;
+  private Long donoId;
 
   // private Estabelecimento estabelecimento; 
 
   public Avaliacao() {
   }
 
-  public Avaliacao(Integer id, Integer nota, String comentario, String criadoEm, Integer donoId) {
+  public Avaliacao(Long id, Integer nota, String comentario, String criadoEm, Long donoId) {
     this.id = id;
     this.nota = nota;
     this.comentario = comentario;
@@ -21,11 +21,11 @@ public class Avaliacao {
     this.donoId = donoId;
   }
 
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -53,11 +53,11 @@ public class Avaliacao {
     this.criadoEm = criadoEm;
   }
 
-  public Integer getDonoId() {
+  public Long getDonoId() {
     return donoId;
   }
 
-  public void setDonoId(Integer donoId) {
+  public void setDonoId(Long donoId) {
     this.donoId = donoId;
   }
 
