@@ -5,10 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.favoritesapp.dto.UsuarioDTO;
 import br.com.fiap.favoritesapp.service.UsuarioService;
+  //findAll
+  //findById
+  //create
+  //update
+  //delete
 
 @RestController
 public class UsuarioController {
@@ -22,14 +28,17 @@ public class UsuarioController {
     return ResponseEntity.ok().body(usuarios);
   }
 
-  // @GetMapping("/api/usuarios/{id}")
-  // public ResponseEntity<UsuarioDTO> findById(){
+  @GetMapping("/api/usuarios/{id}")
+  public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id){
+    UsuarioDTO usuario = service.findById(id);
+    return ResponseEntity.ok().body(usuario);  
+  }
 
-  // }
+  //create
 
-    // @GetMapping("/api/usuarios")  
-    // public String usuario(){
-    //   return "Usuario";
-    // }
 
+  //update
+
+
+  //delete
 }
