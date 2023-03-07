@@ -40,7 +40,7 @@ Uma Api para sistema de avaliações de estabelecimentos
 
 ### Alterar Avatar
 
-`PATCH` /favoriteapp/api/usuarios/{id}/avatar
+`PUT` /favoriteapp/api/usuarios/{id}/avatar
 
 **Códigos de Respostas**
 
@@ -515,3 +515,26 @@ Uma Api para sistema de avaliações de estabelecimentos
 | 200    | Estabelecimento removida com sucesso                      |
 | 404    | O estabelecimento não foi localizado                      |
 | 500    | Ocorreu um erro interno enquanto processava a solicitação |
+
+<!-- ## Sobre nos
+
+### Listar sobre nos
+
+`GET` /favoriteapp/api/usuarios/sobreNos
+
+**Códigos de Respostas**
+
+| código | descrição                                                 |
+| ------ | --------------------------------------------------------- |
+| 200    | Retorna o sobre nos                                       |
+| 404    | O sobre nos não foi localizado                            |
+| 500    | Ocorreu um erro interno enquanto processava a solicitação |
+
+**Exemplo corpo requisição**
+
+```js
+{
+  title: "",
+  description: ""
+}
+``` -->
