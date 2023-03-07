@@ -1,5 +1,4 @@
-package br.com.fiap.favoritesapp.models;
-
+package br.com.fiap.favoritesapp.model;
 
 public class Usuario {
 
@@ -47,36 +46,29 @@ public class Usuario {
       return email;
     }
 
-
     public void setEmail(String email) {
       this.email = email;
     }
-
 
     public String getSenha() {
       return senha;
     }
 
-
     public void setSenha(String senha) {
       this.senha = senha;
     }
-
 
     public String getTelefone() {
       return telefone;
     }
 
-
     public void setTelefone(String telefone) {
       this.telefone = telefone;
     }
 
-
     public String getAvatar() {
       return avatar;
     }
-
 
     public void setAvatar(String avatar) {
       this.avatar = avatar;

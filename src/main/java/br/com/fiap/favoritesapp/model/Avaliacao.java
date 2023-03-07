@@ -1,4 +1,4 @@
-package br.com.fiap.favoritesapp.models;
+package br.com.fiap.favoritesapp.model;
 
 public class Avaliacao {
 
