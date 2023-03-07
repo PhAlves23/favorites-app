@@ -22,8 +22,11 @@ public class UsuarioService {
     return list.stream().map(u -> new UsuarioDTO(u)).toList();
   }
 
-  // @Transactional(readOnly = true)
-  // public UsuarioDTO findById
+  @Transactional(readOnly = true)
+  public UsuarioDTO findById(Long id){
+    var usuario = repository.findById(id).get();
+    return new UsuarioDTO(usuario);
+  }
 
   //CRUD
 
