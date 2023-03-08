@@ -1,5 +1,6 @@
 package br.com.fiap.favoritesapp.dto;
 
+import br.com.fiap.favoritesapp.model.Endereco;
 import br.com.fiap.favoritesapp.model.Usuario;
 
 public class UsuarioDTO { 
@@ -14,7 +15,7 @@ public class UsuarioDTO {
   public UsuarioDTO() {
   }
 
-  public UsuarioDTO(Long id, String nome, String email, String senha, Byte avatar, String telefone) {
+  public UsuarioDTO(Long id, String nome, String email, String senha, Byte avatar, Endereco endereco, String telefone) {
     this.id = id;
     this.nome = nome;
     this.email = email;
@@ -39,6 +40,7 @@ public class UsuarioDTO {
   public void setId(Long id) {
     this.id = id;
   }
+
 
   public String getNome() {
     return nome;

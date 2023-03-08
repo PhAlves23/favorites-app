@@ -28,11 +28,22 @@ public class UsuarioService {
     return new UsuarioDTO(usuario);
   }
 
-  //CRUD
+  @Transactional
+  public UsuarioDTO insert(UsuarioDTO usuarioDTO){
+    var usuario = repository.save(new Usuario(usuarioDTO));
+    return new UsuarioDTO(usuario);
+  }
 
-  //findAll
-  //findById
-  //save
-  //deleteById
+  @Transactional
+  public UsuarioDTO update(Long id, UsuarioDTO usuarioDTO){
+    var usuario = repository.getReferenceById(id);
+    usuario = repository.save(new Usuario(usuarioDTO));
+    return new UsuarioDTO(usuario);
+  }
+
+  @Transactional
+  public void  delete(Long id){
+    repository.deleteById(id);
+  }
 
 }
