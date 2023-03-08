@@ -3,6 +3,7 @@ package br.com.fiap.favoritesapp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,11 @@ public class UsuarioService {
     List<Usuario> list = repository.findAll();
     return list.stream().map(u -> new UsuarioDTO(u)).toList();
   }
+
+  // @Transactional(readOnly = true)
+  // public Page<UsuarioDTO> findAll(Pageable pagination){
+  //   return repository.findAll(pagination).map(UsuarioDTO::new);
+  // }
 
   @Transactional(readOnly = true)
   public UsuarioDTO findById(Long id){
@@ -45,5 +51,4 @@ public class UsuarioService {
   public void  delete(Long id){
     repository.deleteById(id);
   }
-
 }

@@ -33,6 +33,14 @@ public class UsuarioDTO {
     this.telefone = usuario.getTelefone();
   }
 
+  public UsuarioDTO(UsuarioDTO usuarioDTO){
+    this.nome = usuarioDTO.getNome();
+    this.email = usuarioDTO.getEmail();
+    this.senha = usuarioDTO.getSenha();
+    this.telefone = usuarioDTO.getTelefone();
+    this.avatar = usuarioDTO.getAvatar();
+  }
+
   public Long getId() {
     return id;
   }

@@ -28,6 +28,12 @@ public class UsuarioController {
     return ResponseEntity.ok().body(usuarios);
   }
 
+  // @GetMapping("/api/usuarios")
+  // public ResponseEntity<Page<UsuarioDTO>> findAll(Pageable pagination){
+  //   Page<UsuarioDTO> usuarios = service.findAll(pagination);
+  //   return ResponseEntity.ok().body(usuarios);
+  // }
+
   @GetMapping("/api/usuarios/{id}")
   public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id){
     UsuarioDTO usuario = service.findById(id);
