@@ -8,17 +8,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.fiap.favoritesapp.dto.UsuarioDTO;
 import br.com.fiap.favoritesapp.service.UsuarioService;
-  //findAll
-  //findById
-  //create
-  //update
-  //delete
 
 @RestController
 public class UsuarioController {
@@ -46,9 +42,12 @@ public class UsuarioController {
     return ResponseEntity.created(uri).body(usuario);
   }
 
-
   //update
-
+  @PutMapping("/api/usuarios/{id}")
+  public ResponseEntity<UsuarioDTO> update(@PathVariable Long id, @RequestBody UsuarioDTO dto){
+    var usuario = service.update(id, dto);
+    return ResponseEntity.ok().body(usuario);
+  }
 
   @DeleteMapping("/api/usuarios/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id){
