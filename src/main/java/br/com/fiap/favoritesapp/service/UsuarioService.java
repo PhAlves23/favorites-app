@@ -28,10 +28,11 @@ public class UsuarioService {
     return new UsuarioDTO(usuario);
   }
 
-  // @Transactional
-  // public UsuarioDTO create(UsuarioDTO dto){
-    
-  // }
+  @Transactional
+  public UsuarioDTO insert(UsuarioDTO usuarioDTO){
+    var usuario = repository.save(new Usuario(usuarioDTO));
+    return new UsuarioDTO(usuario);
+  }
 
   @Transactional
   public void  delete(Long id){
