@@ -28,11 +28,14 @@ public class UsuarioService {
     return new UsuarioDTO(usuario);
   }
 
-  //CRUD
+  // @Transactional
+  // public UsuarioDTO create(UsuarioDTO dto){
+    
+  // }
 
-  //findAll
-  //findById
-  //save
-  //deleteById
+  @Transactional
+  public void  delete(Long id){
+    repository.deleteById(id);
+  }
 
 }
