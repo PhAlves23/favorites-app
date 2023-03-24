@@ -12,6 +12,9 @@ INSERT INTO TB_CATEGORIA(nome) VALUES ('Salão de Beleza');
 INSERT INTO TB_CATEGORIA(nome) VALUES ('Farmácia');	
 INSERT INTO TB_CATEGORIA(nome) VALUES ('Padaria');	
 
+INSERT INTO TB_AVALIACAO(categoria_id, comentario, data, nota, usuario_id) VALUES (1, 'Muito bom', '2019-10-10', 5, 1);
+INSERT INTO TB_AVALIACAO(categoria_id, comentario, data, nota, usuario_id) VALUES (1, 'Incrível!!', '2022-10-10', 4, 2);
+
 
 -- INSERT INTO TB_ESTABELECIMENTO(contato, descricao, endereco, horario_funcionamento, imagem, local, nome, nota, site) VALUES ('11972266510', 'Restaurante muito bom', 'Rua dos Bobos, 0', '2019-10-10', 'imagem', 'São Paulo', 'Restaurante do Paulão', 5, 'www.restaurantedopaulao.com.br');
 
