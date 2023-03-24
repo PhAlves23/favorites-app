@@ -2,6 +2,7 @@ package br.com.fiap.favoritesapp.model;
 
 import java.io.Serializable;
 
+import br.com.fiap.favoritesapp.dto.UsuarioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String email, String senha, String telefone, Byte avatar) {
+    public Usuario(Long id, String nome, String email, String senha, String telefone, Endereco endereco, Byte avatar) {
       this.id = id;
       this.nome = nome;
       this.email = email;
@@ -34,26 +35,29 @@ public class Usuario implements Serializable {
       this.avatar = avatar;
     }
 
+    public Usuario(UsuarioDTO usuarioDTO){
+      this.nome = usuarioDTO.nome();
+      this.email = usuarioDTO.email();
+      this.senha = usuarioDTO.senha();
+      this.telefone = usuarioDTO.telefone();
+      this.avatar = usuarioDTO.avatar();
+    }
 
     public Long getId() {
       return id;
     }
 
-
     public void setId(Long id) {
       this.id = id;
     }
-
 
     public String getNome() {
       return nome;
     }
 
-
     public void setNome(String nome) {
       this.nome = nome;
     }
-
 
     public String getEmail() {
       return email;
@@ -116,6 +120,10 @@ public class Usuario implements Serializable {
       } else if (!id.equals(other.id))
         return false;
       return true;
+    }
+
+    public static long getSerialversionuid() {
+      return serialVersionUID;
     }
 
 }
