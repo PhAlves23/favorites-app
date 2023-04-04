@@ -7,6 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity(name = "Estabelecimento")
 @Table(name = "TB_ESTABELECIMENTO")
@@ -14,14 +17,32 @@ public class Estabelecimento {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     private float nota;
+
+
     private String nome;
+
+
     private String site;
+
+
     private String local;
+
+
     private Byte imagem;
+
+
     private String contato;
+
+
     private String endereco;
+
+
     private String descricao;
+
+
     private LocalDateTime horarioFuncionamento;
 
     // private Categoria categoria;

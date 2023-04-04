@@ -8,19 +8,31 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "Usuario")
 @Table(name = "TB_USUARIO")
+
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String nome;
+    @Email
     private String email;
+
+    @NotNull
     private String senha;
+
     private Byte avatar;
+
+    @NotNull
     private String telefone;
 
     public Usuario() {
