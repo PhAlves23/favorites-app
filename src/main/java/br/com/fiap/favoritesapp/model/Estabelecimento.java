@@ -21,7 +21,6 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Estabelecimento {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

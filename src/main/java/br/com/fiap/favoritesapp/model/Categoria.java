@@ -19,10 +19,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Categoria implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-  
+public class Categoria {
       @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
 
