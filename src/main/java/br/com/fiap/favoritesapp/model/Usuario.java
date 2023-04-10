@@ -2,6 +2,7 @@ package br.com.fiap.favoritesapp.model;
 
 import java.io.Serializable;
 
+import br.com.fiap.favoritesapp.dto.EstabelecimentoDTO;
 import br.com.fiap.favoritesapp.dto.UsuarioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
