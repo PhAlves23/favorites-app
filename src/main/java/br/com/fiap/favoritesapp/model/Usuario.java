@@ -39,7 +39,7 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String email, String senha, String telefone, Endereco endereco, Byte avatar) {
+    public Usuario(Long id, String nome, String email, String senha, String telefone, Byte avatar) {
       this.id = id;
       this.nome = nome;
       this.email = email;
