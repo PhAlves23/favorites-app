@@ -22,33 +22,35 @@ import lombok.*;
 @EqualsAndHashCode
 public class Avaliacao {
 
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @NotNull
-  private Long usuario_id;
+    @NotNull
+    private Long usuarioId;
 
-  @NotNull
-  private Long categoria_id;
+    @NotNull
+    private Long categoriaId;
 
-  @NotNull
-  private Integer nota;
+    @NotNull
+    private Integer nota;
 
-  @NotNull
-  private LocalDate data;
+    @NotNull
+    private LocalDate data;
 
-  @NotBlank @Size(min = 5, max = 255)
-  private String comentario;
+    @NotBlank
+    @Size(min = 5, max = 255)
+    private String comentario;
 
-  // private Estabelecimento estabelecimento;
+    // private Estabelecimento estabelecimento;
 
-  public Avaliacao(AvaliacaoDTO avaliacaoDTO){
-    this.id = avaliacaoDTO.id();
-    this.usuario_id = avaliacaoDTO.usuario_id();
-    this.categoria_id = avaliacaoDTO.categoria_id();
-    this.nota = avaliacaoDTO.nota();
-    this.data = avaliacaoDTO.data();
-    this.comentario = avaliacaoDTO.comentario();
-  }
+    public Avaliacao(AvaliacaoDTO avaliacaoDTO) {
+        this.id = avaliacaoDTO.id();
+        this.usuarioId = avaliacaoDTO.usuarioId();
+        this.categoriaId = avaliacaoDTO.categoriaId();
+        this.nota = avaliacaoDTO.nota();
+        this.data = avaliacaoDTO.data();
+        this.comentario = avaliacaoDTO.comentario();
+    }
 
 }

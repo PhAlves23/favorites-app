@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 import br.com.fiap.favoritesapp.model.Avaliacao;
 
-public record AvaliacaoDTO(  Long id, Long usuario_id, Long categoria_id, Integer nota, LocalDate data, String comentario) {
+public record AvaliacaoDTO(  Long id, Long usuarioId, Long categoriaId, Integer nota, LocalDate data, String comentario) {
   public AvaliacaoDTO(Avaliacao avaliacao){
-    this(avaliacao.getId(), avaliacao.getUsuario_id(), avaliacao.getCategoria_id(), avaliacao.getNota(), avaliacao.getData(), avaliacao.getComentario());
+    this(avaliacao.getId(), avaliacao.getUsuarioId(), avaliacao.getCategoriaId(), avaliacao.getNota(), avaliacao.getData(), avaliacao.getComentario());
   }
 }
