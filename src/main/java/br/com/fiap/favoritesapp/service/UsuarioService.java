@@ -1,9 +1,11 @@
 package br.com.fiap.favoritesapp.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,10 +20,24 @@ public class UsuarioService {
   public UsuarioRepository repository;
 
   @Transactional(readOnly = true)
-  public List<UsuarioDTO> findAll(){
-    List<Usuario> list = repository.findAll();
-    return list.stream().map(u -> new UsuarioDTO(u)).toList();
+  public Page<UsuarioDTO> findAll(String nome, Pageable pageable) {
+
+    if(nome == null){
+      Page<Usuario> usuarios = repository.findAll(pageable);
+      return usuarios.map(u -> new UsuarioDTO(u));
+    }
+
+    Page<Usuario> usuarios = repository.findByNomeContainingIgnoreCase(nome, pageable);
+    return usuarios.map(u -> new UsuarioDTO(u));
+
   }
+
+  @Transactional(readOnly = true)
+  public Page<UsuarioDTO> findByNomeContainingIgnoreCase(String nome, Pageable pageable) {
+    Page<Usuario> page = repository.findByNomeContainingIgnoreCase(nome, pageable);
+    return page.map(usuario -> new UsuarioDTO(usuario));
+  }
+
 
   @Transactional(readOnly = true)
   public UsuarioDTO findById(Long id){
@@ -46,5 +62,6 @@ public class UsuarioService {
   public void  delete(Long id){
     repository.deleteById(id);
   }
+
 
 }

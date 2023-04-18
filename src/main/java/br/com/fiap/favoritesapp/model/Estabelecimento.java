@@ -24,14 +24,32 @@ public class Estabelecimento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private float nota;
+
+    @NotNull
     private String nome;
+
+    @NotNull
     private String site;
+
+    @NotNull
     private String logradouro;
+
+    @NotNull
     private Byte imagem;
+
+    @NotNull
     private String contato;
+
+    @NotNull
     private String endereco;
+
+    @NotBlank
     private String descricao;
+
+    @NotNull
     private LocalDateTime horarioFuncionamento;
 
     public Estabelecimento(EstabelecimentoDTO estabelecimentoDTO) {
