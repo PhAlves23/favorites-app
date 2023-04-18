@@ -6,6 +6,8 @@ import br.com.fiap.favoritesapp.model.Estabelecimento;
 import br.com.fiap.favoritesapp.model.Usuario;
 import br.com.fiap.favoritesapp.repository.EstabelecimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +19,29 @@ public class EstabelecimentoService {
     @Autowired
     private EstabelecimentoRepository repository;
 
+//    @Transactional(readOnly = true)
+//    public List<EstabelecimentoDTO> findAll() {
+//        List<Estabelecimento> list = repository.findAll();
+//        return list.stream().map(e -> new EstabelecimentoDTO(e)).toList();
+//    }
+
     @Transactional(readOnly = true)
-    public List<EstabelecimentoDTO> findAll() {
-        List<Estabelecimento> list = repository.findAll();
-        return list.stream().map(e -> new EstabelecimentoDTO(e)).toList();
+    public Page<EstabelecimentoDTO> findAll(String nome, Pageable pageable) {
+
+        if(nome == null){
+            Page<Estabelecimento> estabelecimentos = repository.findAll(pageable);
+            return estabelecimentos.map(e -> new EstabelecimentoDTO(e));
+        }
+
+        Page<Estabelecimento> estabelecimentos = repository.findByNomeContainingIgnoreCase(nome, pageable);
+        return estabelecimentos.map(e -> new EstabelecimentoDTO(e));
+
+    }
+
+    @Transactional(readOnly = true)
+    public Page<EstabelecimentoDTO> findByNomeContainingIgnoreCase(String nome, Pageable pageable) {
+        Page<Estabelecimento> page = repository.findByNomeContainingIgnoreCase(nome, pageable);
+        return page.map(e -> new EstabelecimentoDTO(e));
     }
 
     @Transactional(readOnly = true)
@@ -46,5 +67,6 @@ public class EstabelecimentoService {
     public void  delete(Long id){
         repository.deleteById(id);
     }
+
 
 }

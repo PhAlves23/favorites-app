@@ -37,7 +37,6 @@ public class Estabelecimento {
     @NotNull
     private String logradouro;
 
-    @NotNull
     private Byte imagem;
 
     @NotNull
