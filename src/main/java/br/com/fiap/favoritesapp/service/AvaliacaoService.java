@@ -2,6 +2,7 @@ package br.com.fiap.favoritesapp.service;
 
 import java.util.List;
 
+import br.com.fiap.favoritesapp.model.Estabelecimento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,18 +29,32 @@ public class AvaliacaoService {
     return new AvaliacaoDTO(avaliacao);
   }
 
+//  public List<Avaliacao> buscarAvaliacoesPorUsuario(Long userId) {
+//    return repository.findByUsuarioId(userId);
+//  }
+
   @Transactional
   public AvaliacaoDTO insert(AvaliacaoDTO avaliacaoDTO){
     var avaliacao = repository.save(new Avaliacao(avaliacaoDTO));
     return new AvaliacaoDTO(avaliacao);
   }
 
+//  @Transactional
+//  public AvaliacaoDTO update(Long id, AvaliacaoDTO avaliacaoDTO){
+//    var avaliacao = repository.getReferenceById(id);
+//    avaliacao = repository.save(new Avaliacao(avaliacaoDTO));
+//    return new AvaliacaoDTO(avaliacao);
+//  }
+
   @Transactional
   public AvaliacaoDTO update(Long id, AvaliacaoDTO avaliacaoDTO){
-    var avaliacao = repository.getReferenceById(id);
-    avaliacao = repository.save(new Avaliacao(avaliacaoDTO));
+    var avaliacao = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Avaliação não encontrada"));
+    avaliacao.setNota(avaliacaoDTO.nota());
+    avaliacao.setComentario(avaliacaoDTO.comentario());
+    avaliacao = repository.save(avaliacao);
     return new AvaliacaoDTO(avaliacao);
   }
+
 
   @Transactional
   public void delete(Long id){

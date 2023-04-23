@@ -1,14 +1,12 @@
 package br.com.fiap.favoritesapp.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import br.com.fiap.favoritesapp.dto.AvaliacaoDTO;
 import br.com.fiap.favoritesapp.dto.EstabelecimentoDTO;
 import br.com.fiap.favoritesapp.dto.UsuarioDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -38,6 +36,9 @@ public class Usuario {
 
     @NotNull
     private String telefone;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Avaliacao> avaliacoes;
 
     public Usuario(UsuarioDTO usuarioDTO){
       this.nome = usuarioDTO.nome();

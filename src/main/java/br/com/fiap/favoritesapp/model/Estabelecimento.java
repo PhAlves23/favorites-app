@@ -1,13 +1,12 @@
 package br.com.fiap.favoritesapp.model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import br.com.fiap.favoritesapp.dto.EstabelecimentoDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -50,6 +49,17 @@ public class Estabelecimento {
 
     @NotNull
     private LocalDateTime horarioFuncionamento;
+
+    @OneToMany(mappedBy = "estabelecimento")
+    private List<Avaliacao> avaliacoes;
+
+    @ManyToMany
+    @JoinTable(
+            name = "TB_ESTABELECIMENTO_CATEGORIA",
+            joinColumns = @JoinColumn(name = "estabelecimento_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    private Set<Categoria> categorias = new HashSet<>();
+
 
     public Estabelecimento(EstabelecimentoDTO estabelecimentoDTO) {
         this.id = estabelecimentoDTO.id();

@@ -3,11 +3,7 @@ package br.com.fiap.favoritesapp.model;
 import java.time.LocalDate;
 
 import br.com.fiap.favoritesapp.dto.AvaliacaoDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -42,7 +38,14 @@ public class Avaliacao {
     @Size(min = 5, max = 255)
     private String comentario;
 
-    // private Estabelecimento estabelecimento;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estabelecimento_id")
+    private Estabelecimento estabelecimento;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuarioId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Usuario usuario;
+
 
     public Avaliacao(AvaliacaoDTO avaliacaoDTO) {
         this.id = avaliacaoDTO.id();

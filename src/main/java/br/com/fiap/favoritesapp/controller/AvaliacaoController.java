@@ -2,6 +2,7 @@ package br.com.fiap.favoritesapp.controller;
 
 import java.util.List;
 
+import br.com.fiap.favoritesapp.model.Avaliacao;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,12 @@ public class AvaliacaoController {
     AvaliacaoDTO avaliacao = service.findById(id);
     return ResponseEntity.ok(avaliacao);
   }
+
+//  @GetMapping("/usuario/{userId}")
+//  public ResponseEntity<List<Avaliacao>> buscarAvaliacoesPorUsuario(@PathVariable Long userId) {
+//    List<Avaliacao> avaliacoes = service.buscarAvaliacoesPorUsuario(userId);
+//    return ResponseEntity.ok(avaliacoes);
+//  }
 
   @PostMapping
   public ResponseEntity<AvaliacaoDTO> insert(@RequestBody @Valid AvaliacaoDTO dto){

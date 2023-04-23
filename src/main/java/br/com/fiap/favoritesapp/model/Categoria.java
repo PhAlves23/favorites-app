@@ -1,14 +1,12 @@
 package br.com.fiap.favoritesapp.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 import br.com.fiap.favoritesapp.dto.CategoriaDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -26,7 +24,11 @@ public class Categoria {
       @NotNull
       private String nome;
 
-      public Categoria(CategoriaDTO categoriaDTO){
+    @ManyToMany(mappedBy = "categorias")
+    private Set<Estabelecimento> estabelecimentos = new HashSet<>();
+
+
+    public Categoria(CategoriaDTO categoriaDTO){
         this.id = categoriaDTO.id();
         this.nome = categoriaDTO.nome();
       }
