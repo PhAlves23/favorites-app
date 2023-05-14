@@ -9,18 +9,36 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.fiap.favoritesapp.dto.UsuarioDTO;
+import br.com.fiap.favoritesapp.model.Credencial;
+import br.com.fiap.favoritesapp.model.Usuario;
+import br.com.fiap.favoritesapp.repository.UsuarioRepository;
+import br.com.fiap.favoritesapp.service.TokenService;
 import br.com.fiap.favoritesapp.service.UsuarioService;
 
 @RestController
-@RequestMapping("/api/usuarios")
+//@RequestMapping("/api/usuarios")
 public class UsuarioController {
 
   @Autowired
-  private UsuarioService service;
+  UsuarioService service;
+
+  @Autowired
+  UsuarioRepository repository;
+
+  @Autowired
+  AuthenticationManager manager;
+
+  @Autowired
+  PasswordEncoder encoder;
+
+  @Autowired
+  TokenService tokenService;
 
   @GetMapping
   public ResponseEntity<Page<UsuarioDTO>> findAll(
@@ -60,4 +78,22 @@ public class UsuarioController {
     service.delete(id);
     return ResponseEntity.noContent().build();
   }
+//-----------------------------------------------nv parte
+  @PostMapping("/api/registrar")
+    public ResponseEntity<Usuario> registrar(@RequestBody @Valid Usuario usuario){
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
+        repository.save(usuario);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @PostMapping("/api/login")
+    public ResponseEntity<Object> login(@RequestBody Credencial credencial){
+        manager.authenticate(credencial.toAuthentication());
+        var token = tokenService.generateToken(credencial);
+        return ResponseEntity.ok(token);
+    }
+
+
+
+
 }
