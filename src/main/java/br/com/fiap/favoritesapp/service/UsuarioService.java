@@ -4,7 +4,6 @@ package br.com.fiap.favoritesapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,7 +37,7 @@ public class UsuarioService {
     return page.map(usuario -> new UsuarioDTO(usuario));
   }
 
-
+  //--------------------------------------------//
   @Transactional(readOnly = true)
   public UsuarioDTO findById(Long id){
     var usuario = repository.findById(id).get();

@@ -2,7 +2,7 @@ package br.com.fiap.favoritesapp.controller;
 
 import java.util.List;
 
-import br.com.fiap.favoritesapp.model.Avaliacao;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
