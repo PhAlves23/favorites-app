@@ -29,12 +29,6 @@ public class AvaliacaoController {
     return ResponseEntity.ok(avaliacao);
   }
 
-//  @GetMapping("/usuario/{userId}")
-//  public ResponseEntity<List<Avaliacao>> buscarAvaliacoesPorUsuario(@PathVariable Long userId) {
-//    List<Avaliacao> avaliacoes = service.buscarAvaliacoesPorUsuario(userId);
-//    return ResponseEntity.ok(avaliacoes);
-//  }
-
   @PostMapping
   public ResponseEntity<AvaliacaoDTO> insert(@RequestBody @Valid AvaliacaoDTO dto){
     AvaliacaoDTO avaliacao = service.insert(dto);

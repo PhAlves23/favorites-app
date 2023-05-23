@@ -2,7 +2,7 @@ package br.com.fiap.favoritesapp.service;
 
 import java.util.List;
 
-import br.com.fiap.favoritesapp.model.Estabelecimento;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

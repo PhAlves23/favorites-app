@@ -17,27 +17,7 @@ public class UsuarioService {
 
   @Autowired
   public UsuarioRepository repository;
-
-  @Transactional(readOnly = true)
-  public Page<UsuarioDTO> findAll(String nome, Pageable pageable) {
-
-    if(nome == null){
-      Page<Usuario> usuarios = repository.findAll(pageable);
-      return usuarios.map(u -> new UsuarioDTO(u));
-    }
-
-    Page<Usuario> usuarios = repository.findByNomeContainingIgnoreCase(nome, pageable);
-    return usuarios.map(u -> new UsuarioDTO(u));
-
-  }
-
-  @Transactional(readOnly = true)
-  public Page<UsuarioDTO> findByNomeContainingIgnoreCase(String nome, Pageable pageable) {
-    Page<Usuario> page = repository.findByNomeContainingIgnoreCase(nome, pageable);
-    return page.map(usuario -> new UsuarioDTO(usuario));
-  }
-
-  //--------------------------------------------//
+  
   @Transactional(readOnly = true)
   public UsuarioDTO findById(Long id){
     var usuario = repository.findById(id).get();
